@@ -9,6 +9,10 @@ export const useForm = ( initialForm = {}, formValidations={} ) => {
         createValidators()
     }, [formState])
 
+    useEffect(() => {
+        setFormState(initialForm)
+    }, [initialForm])
+
     const createValidators = () =>{
         const formData=formState    //En RegisterPage enviamos la función con formData
         const formCheckedValues={}
