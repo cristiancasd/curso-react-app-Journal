@@ -24,6 +24,7 @@ export const startCreatingUserWithEmailPassword = ({email, password, displayName
 
 export const startGoogleSignIn = () => {
     return async (dispatch) => {
+        console.log('voy a entrar por google')
         dispatch(checkingCredentials());
         const result= await singInWithGoogle()
         if(!result.ok) return dispatch(logout(result.errorMessage))

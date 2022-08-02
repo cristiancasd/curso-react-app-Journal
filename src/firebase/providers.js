@@ -25,6 +25,8 @@ export const registerUserWithEmailPassword = async ({email, password, displayNam
 
 export const singInWithGoogle = async() => {
     try{
+        console.log('en singInWithGoogle')
+
         const result = await signInWithPopup(FirebaseAuth, googleProvider);
         //const credentials = GoogleAuthProvider.credentialFromResult(result);
         const user = result.user;
@@ -35,7 +37,9 @@ export const singInWithGoogle = async() => {
             displayName, email, photoURL, uid
         }
         
-    } catch(err){
+    } catch(error){
+        console.log('error en  singInWithGoogle')
+        console.log('error',error)
         const errorCode = error.code;
         const errorMessage = error.message;
         return{
