@@ -4,11 +4,12 @@ import { signOut} from "firebase/auth";
 
 import { loginWithEmailPassword, logoutFirebase, registerUserWithEmailPassword, singInWithGoogle } from "../../firebase/providers";
 import { checkingCredentials, login, logout } from "./authSlice";
+import { clearNotesLogout } from "../journal/journalSlice";
 
 export const checkingAuthentication = (email,password) => {
     return async (dispatch) => {
         dispatch(checkingCredentials());
-    }
+    } 
 }
 
 export const startCreatingUserWithEmailPassword = ({email, password, displayName}) => {
@@ -17,7 +18,7 @@ export const startCreatingUserWithEmailPassword = ({email, password, displayName
         const {ok, uid, photoURL, errorMessage} = await registerUserWithEmailPassword({email, password, displayName})
         if(!ok) return dispatch(logout({errorMessage}))
         dispatch(login({uid, displayName, email, photoURL}))
-    }   
+    }
 }
 
 
@@ -50,6 +51,7 @@ export const startLogout = () => {
         console.log('startLogout')
         //await logoutFirebase() // No funcionó
         await FirebaseAuth.signOut() //No me funcionó este proceso en el provider, por eso lo hago aquí
+        dispatch(clearNotesLogout())
         dispatch(logout())
     }
 }

@@ -17,7 +17,7 @@ const status = useSelector(state=>state.auth);
       if(!user) return dispatch(logout());
       const {uid, email, displayName, photoURL} = user;
       dispatch(login({uid, email, displayName, photoURL}))
-      dispatch(startLoadingNotes())
+      dispatch(startLoadingNotes()) 
     })
   }, [])
 

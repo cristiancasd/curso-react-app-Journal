@@ -4,7 +4,7 @@ import React, { useMemo } from 'react'
 import { setActiveNote } from '../../store/journal/journalSlice'
 import { useDispatch } from 'react-redux/es/exports'
 
-export const SideBarItem = ({title,body,id,date}) => {
+export const SideBarItem = ({title,body,id,date,imageURL=[]}) => {
 
   const dispatch = useDispatch();
   
@@ -24,7 +24,7 @@ export const SideBarItem = ({title,body,id,date}) => {
 
   //setActiveNote({title,body,id,date})
   const onClickNote =()=>{
-      dispatch(setActiveNote({title,body,id,date}));  
+      dispatch(setActiveNote({title,body,id,date,imageURL}));  
   }
   return (
     <ListItem disablePadding>

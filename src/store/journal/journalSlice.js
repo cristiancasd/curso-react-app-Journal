@@ -6,8 +6,8 @@ export const journalSlice = createSlice({
        isSaving: false,
        messageSaved:'',
        notes:[],
-       activeNote:null
-       
+       activeNote:null,
+       imageVectorChanged:false
    },
    reducers: {
       savingNewNote:(state)=>{
@@ -31,17 +31,37 @@ export const journalSlice = createSlice({
          state.messageSaved='';
       },
       updateNote: (state, action) => { //payload: es la nota actualizada
+         state.imageVectorChanged=false;
          state.isSaving=false;
          state.notes=state.notes.map(note=>{
             if(note.id===action.payload.id) return action.payload;
             return note;
          });
          state.messageSaved=`${action.payload.title}, actualizada correctamente`;
+      },
+      setPhotosToActiveNote:(state,action)=>{    
+         state.activeNote.imageURL=[...state.activeNote.imageURL, ...action.payload]          
+         state.isSaving=false;
+         state.imageVectorChanged=true;
+      },
 
+      clearNotesLogout:(state) =>{
+         state.isSaving=false;
+         state.messageSaved='';
+         state.notes=[];
+         state.activeNote=null;
       },
-      deleteNodeById: (state, action) => {
+
+      deleteImageByURL: (state, action) => { 
+         state.activeNote.imageURL=state.activeNote.imageURL.filter(activeNoteUrl=>activeNoteUrl!==action.payload)
+         state.imageVectorChanged=true;  
       },
-      
+
+      deleteNoteById: (state, action) => {
+         state.activeNote=null;
+         state.notes=state.notes.filter(note=>note.id!==action.payload)
+         state.messageSaved=`${action.payload.title}, Nota Eliminada`;        
+      },
    },
 })
 
@@ -52,5 +72,8 @@ export const {
     setNotes,
     setSaving,
     updateNote,
-    deleteNodeById
+    setPhotosToActiveNote,
+    deleteNoteById,
+    clearNotesLogout,
+    deleteImageByURL
  } = journalSlice.actions

@@ -11,7 +11,7 @@ export const authSlice = createSlice({
        photoURL: null,
        errorMessage: null
    },
-   reducers: {
+   reducers: { 
       login: (state,{payload}) => {
          state.status       =  'authenticated'
          state.uid          =  payload.uid
