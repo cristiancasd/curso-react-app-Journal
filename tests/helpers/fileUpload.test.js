@@ -25,19 +25,18 @@ describe('Pruebas en fileUpload', () => {
 
         const url = await fileUpload( file );
         expect( typeof url ).toBe('string');
+        //console.log('********* ',url)
 
 
         
        // console.log(url);
         const segments = url.split('/');
         const imageId = segments[ segments.length - 1 ].replace('.jpg','');
-        console.log('imageId',imageId)
+        //.log('imageId',imageId)
         const cloudResp = await cloudinary.api.delete_resources([ 'journal-react/' + imageId ], {
            resource_type: 'image'
         });
-        console.log('cloudResp ****', { cloudResp })
-        
-
+        //console.log('cloudResp ****', { cloudResp })
     });
 
     test('debe de retornar object error.message', async() => {

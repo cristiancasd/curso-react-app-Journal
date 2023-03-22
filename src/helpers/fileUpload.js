@@ -23,7 +23,7 @@ export const fileUpload = async(file) => {
     }catch(error){
         //console.log(error);
         const msg= {error:{message:error.message}}
-        console.log(msg)
+        //console.log(msg)
         return(msg)
         //throw new Error(error.message);
     }

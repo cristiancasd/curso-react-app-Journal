@@ -9,7 +9,7 @@
     "stack": "heroku-22",
     "start": "yarn dev",
     "test": "jest --watchAll",
-    "testcriss": "jest "
+    "testcriss": "jest --verbose  "
   },
   "dependencies": {
     "@emotion/react": "^11.9.3",
