@@ -5,10 +5,6 @@ import {getAuth} from 'firebase/auth';
 import {getFirestore} from 'firebase/firestore/lite'
 //import { getEnvVariables } from "../helpers/getEnvVariables";
 
-
-
-
-
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
  /*
@@ -62,18 +58,9 @@ firebaseConfig = {
    storageBucket:   import.meta.env.VITE_FIREBASE_STORAGEBUCKET,
    messagingSenderId:  import.meta.env.VITE_FIREBASE_MESSAGINGSENDERID,
    appId: import.meta.env.VITE_FIREBASE_APPID,
- };*/
- 
- firebaseConfig = {
-  apiKey: process.env.REACT_APP_FIREBASE_APIKEY,
-  authDomain:   process.env.REACT_APP_FIREBASE_AUTHDOMAIN,
-  projectId:   process.env.REACT_APP_FIREBASE_PROJECTID,
-  storageBucket:   process.env.REACT_APP_FIREBASE_STORAGEBUCKET,
-  messagingSenderId:  process.env.REACT_APP_FIREBASE_MESSAGINGSENDERID,
-  appId: process.env.REACT_APP_FIREBASE_APPID,
-};
+ };
+ */
 
-/*
 firebaseConfig = {
   apiKey: process.env.VITE_FIREBASE_APIKEY,
   authDomain:   process.env.VITE_FIREBASE_AUTHDOMAIN,
@@ -81,12 +68,9 @@ firebaseConfig = {
   storageBucket:   process.env.VITE_FIREBASE_STORAGEBUCKET,
   messagingSenderId:  process.env.VITE_FIREBASE_MESSAGINGSENDERID,
   appId: process.env.VITE_FIREBASE_APPID,
-};*/
+};
 /*
 firebaseConfig = {
-  //apiKey: process.env.VITE_FIREBASE_APIKEY,
-  //apiKey: import.meta.env.VITE_FIREBASE_APIKEY,
-
   apiKey: "AIzaSyD2j8-THrH7O13-6Avob75_1Th-FSC0-oU",
   authDomain: "journalapp-auth.firebaseapp.com",
   projectId: "journalapp-auth",
@@ -96,10 +80,10 @@ firebaseConfig = {
 };*/
 
 //Initialize Firebase
-export const FirebaseApp = initializeApp(firebaseConfig);
+export const FirebaseAppTest = initializeApp(firebaseConfig);
 
 //Todas las funcionalidades de autenticación
-export const FirebaseAuth = getAuth(FirebaseApp);
+export const FirebaseAuthTest = getAuth(FirebaseAppTest);
 
 //configuración de la base de datos
-export const FirebaseDB   = getFirestore(FirebaseApp);
+export const FirebaseDBTest   = getFirestore(FirebaseAppTest);

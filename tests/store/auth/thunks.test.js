@@ -1,3 +1,4 @@
+
 import { loginWithEmailPassword, logoutFirebase, registerUserWithEmailPassword, singInWithGoogle } from '../../../src/firebase/providers';
 import { checkingCredentials, login, logout } from '../../../src/store/auth/authSlice';
 import { checkingAuthentication, startCreatingUserWithEmailPassword, startGoogleSignIn, startLoginWithEmailPassword, startLogout } from '../../../src/store/auth/thunks';
@@ -12,6 +13,9 @@ describe('Pruebas en AuthThunks', () => {
     const dispatch = jest.fn();
 
     beforeEach( () => jest.clearAllMocks() );
+
+    console.log('*******************pr.NODE_ENV', process.env.NODE_ENV)
+    console.log('***************pr.NODE_ENV', process.env.VITE_FIREBASE_APIKEY)
 
     test('debe de invocar el checkingCredentials', async() => {
         //first () its the call of the function

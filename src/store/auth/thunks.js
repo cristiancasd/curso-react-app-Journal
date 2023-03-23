@@ -1,6 +1,6 @@
-import { async } from "@firebase/util";
-import { FirebaseAuth } from "../../firebase/config";
-import { signOut } from "firebase/auth";
+//import { async } from "@firebase/util";
+//import { FirebaseAuth } from "../../firebase/config";
+//import { signOut } from "firebase/auth";
 
 import { loginWithEmailPassword, logoutFirebase, registerUserWithEmailPassword, singInWithGoogle } from "../../firebase/providers";
 import { checkingCredentials, login, logout } from "./authSlice";

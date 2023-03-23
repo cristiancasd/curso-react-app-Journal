@@ -1,17 +1,25 @@
 
 import { createUserWithEmailAndPassword, GoogleAuthProvider, signInWithEmailAndPassword, signInWithPopup, updateProfile} from "firebase/auth";
 import { FirebaseAuth } from "./config";
+//import { FirebaseAuthTest } from "./configTest";
 
 const googleProvider = new GoogleAuthProvider();
 
+
 export const registerUserWithEmailPassword = async ({email, password, displayName}) => {
+    //const toUse = process.env.NODE_ENV==='development'
+    //    ? FirebaseAuth
+    //    : FirebaseAuthTest;
+
+    const toUse=FirebaseAuth
+
     try{
-        const resp=await createUserWithEmailAndPassword(FirebaseAuth, email, password)
+        const resp=await createUserWithEmailAndPassword(toUse, email, password)
         const {uid, photoURL}=resp.user; 
         console.log('resp providers ',resp);
         
         //Actualizar el displayName en nuestro proveedor
-        await updateProfile(FirebaseAuth.currentUser,{displayName})
+        await updateProfile(toUse.currentUser,{displayName})
         
         return {
             ok: true,
@@ -27,7 +35,7 @@ export const singInWithGoogle = async() => {
     try{
         console.log('en singInWithGoogle')
 
-        const result = await signInWithPopup(FirebaseAuth, googleProvider);
+        const result = await signInWithPopup(toUse, googleProvider);
         //const credentials = GoogleAuthProvider.credentialFromResult(result);
         const user = result.user;
         const {displayName, email, photoURL, uid}=user
@@ -53,7 +61,7 @@ export const singInWithGoogle = async() => {
 export const loginWithEmailPassword = async ({correo, password}) => {
 
     try{
-        const {user} = await signInWithEmailAndPassword(FirebaseAuth, correo, password)
+        const {user} = await signInWithEmailAndPassword(toUse, correo, password)
         console.log('resp login providers ', user)
         const {uid,email,displayName,photoURL}=user;
         console.log('variables  uid', uid);
@@ -72,6 +80,6 @@ export const loginWithEmailPassword = async ({correo, password}) => {
 
 export const logoutFirebase = async() => {   
     try{
-        return await FirebaseAuth.signOut() // No funcionó, hago el proceso en el thunks
+        return await toUse.signOut() // No funcionó, hago el proceso en el thunks
     }catch(error){ console.log(error)}
 }
