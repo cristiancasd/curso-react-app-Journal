@@ -13,3 +13,14 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - run: yarn install && yarn test:ci
+        env:
+            VITE_API_CLOUD_NAME: ${{ secrets.VITE_API_CLOUD_NAME }}
+            VITE_API_API_KEY: ${{ secrets.VITE_API_API_KEY }}
+            VITE_API_API_SECRET: ${{ secrets.VITE_API_API_SECRET }}
+            VITE_FIREBASE_APIKEY: ${{ secrets.VITE_FIREBASE_APIKEY }}
+            VITE_FIREBASE_AUTHDOMAIN: ${{ secrets.VITE_FIREBASE_AUTHDOMAIN }}
+            VITE_FIREBASE_PROJECTID: ${{ secrets.VITE_FIREBASE_PROJECTID }}
+            VITE_FIREBASE_STORAGEBUCKET: ${{ secrets.VITE_FIREBASE_STORAGEBUCKET }}
+            VITE_FIREBASE_MESSAGINGSENDERID: ${{ secrets.VITE_FIREBASE_MESSAGINGSENDERID }}
+            VITE_FIREBASE_APPID: ${{ secrets.VITE_FIREBASE_APPID }}
+
