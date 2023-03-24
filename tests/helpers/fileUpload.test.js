@@ -7,13 +7,9 @@ import { fileUpload } from '../../src/helpers/fileUpload';
 
 
 cloudinary.config({
-    /*cloud_name: process.env.VITE_API_CLOUD_NAME,
+    cloud_name: process.env.VITE_API_CLOUD_NAME,
     api_key: process.env.VITE_API_API_KEY,
-    api_secret: process.env.VITE_API_API_SECRET,*/
-
-    cloud_name: "cristiancasd",
-    api_key: "649859583518348",
-    api_secret: "6gM1KfVDWU528O_2h_x-wsvMnvs",
+    api_secret: process.env.VITE_API_API_SECRET,
 
     secure: true
 });
