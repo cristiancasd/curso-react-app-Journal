@@ -28,15 +28,7 @@ const firebaseConfig = {
   messagingSenderId: VITE_FIREBASE_MESSAGINGSENDERID,
   appId: VITE_FIREBASE_APPID,
 };
-/*
-const firebaseConfig = {
-  apiKey: "AIzaSyD2j8-THrH7O13-6Avob75_1Th-FSC0-oU",
-  authDomain: "journalapp-auth.firebaseapp.com",
-  projectId: "journalapp-auth",
-  storageBucket: "journalapp-auth.appspot.com",
-  messagingSenderId: "616083603621",
-  appId: "1:616083603621:web:8c38d7f6ad4e2a189a4d4c",
-};*/
+
 
 //Initialize Firebase
 export const FirebaseApp = initializeApp(firebaseConfig);
