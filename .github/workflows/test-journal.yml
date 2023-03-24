@@ -3,6 +3,9 @@ name: tests-journal
 
 on: 
   pull_request:
+    branches:
+        - main
+        - dev
   
 jobs:
   build:
