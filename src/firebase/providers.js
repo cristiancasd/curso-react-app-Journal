@@ -7,7 +7,7 @@ const googleProvider = new GoogleAuthProvider();
 export const registerUserWithEmailPassword = async ({email, password, displayName}) => {
     try{
         const resp=await createUserWithEmailAndPassword(FirebaseAuth, email, password)
-        const {uid, photoURL}=resp.user;
+        const {uid, photoURL}=resp.user; 
         console.log('resp providers ',resp);
         
         //Actualizar el displayName en nuestro proveedor
@@ -70,7 +70,8 @@ export const loginWithEmailPassword = async ({correo, password}) => {
     }   
 }
 
-export const logoutFirebase = () => {   
-    try{//await FirebaseAuth.signOut() // No funcionó, hago el proceso en el thunks
+export const logoutFirebase = async() => {   
+    try{
+        return await FirebaseAuth.signOut() // No funcionó, hago el proceso en el thunks
     }catch(error){ console.log(error)}
 }

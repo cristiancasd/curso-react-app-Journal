@@ -69,7 +69,10 @@ export const startUploadingFiles = (files=[]) => {
 
         const fileUploadPromises=[];
         for(const file of files){
-            fileUploadPromises.push(fileUpload(file))
+            
+            //fileUploadPromises.push(fileUpload(file))
+            const response=fileUpload(file)
+            if(!response.error)fileUploadPromises.push(response)
         }
         const photosUrls=await Promise.all(fileUploadPromises);
         console.log('imagen creada en cloudinary')
