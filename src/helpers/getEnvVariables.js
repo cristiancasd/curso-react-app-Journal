@@ -1,7 +1,13 @@
 
 export const getEnvVariables = () => {
-    //import.meta.env;
+    import.meta.env;
+
+
     return {
+        ...import.meta.env
+    }
+
+    /*return {
         VITE_API_CLOUD_NAME: process.env.VITE_API_CLOUD_NAME,
         VITE_API_API_KEY: process.env.VITE_API_API_KEY,
         VITE_API_API_SECRET: process.env.VITE_API_API_SECRET,
@@ -16,6 +22,6 @@ export const getEnvVariables = () => {
         //VITE_API_STAGE: import.meta.env.VITE_API_STAGE,
 
         //...import.meta.env
-    }
+    }*/
 } 
 
