@@ -79,16 +79,6 @@ describe('Pruebas en AuthThunks', () => {
         expect( dispatch ).toHaveBeenCalledWith( logout(loginData) );
 
     });
-    
-
-    test('startLogout debe de llamar logoutFirebase, clearNotes y logout', async() => {
-
-        await startLogout()(dispatch);
-
-        expect( logoutFirebase ).toHaveBeenCalled();
-        expect( dispatch ).toHaveBeenCalledWith( clearNotesLogout() );
-        expect( dispatch ).toHaveBeenCalledWith( logout() );
-    });
 
     
     test('startCreatingUserWithEmailPassword debe de llamar checkingCredentials y login - Exito', async() => {
@@ -121,6 +111,18 @@ describe('Pruebas en AuthThunks', () => {
         expect( dispatch ).toHaveBeenCalledWith( logout(registerData) );
 
     });
- 
+
+        
+
+    test('startLogout debe de llamar logoutFirebase, clearNotes y logout', async() => {
+
+        await startLogout()(dispatch);
+
+        expect( logoutFirebase ).toHaveBeenCalled();
+        expect( dispatch ).toHaveBeenCalledWith( clearNotesLogout() );
+        expect( dispatch ).toHaveBeenCalledWith( logout() );
+    });
+
+
     
 });
